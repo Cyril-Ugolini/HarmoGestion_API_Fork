@@ -43,10 +43,12 @@ jobs:
         name: MS Teams Notification
         runs-on: ubuntu-latest
         needs: build
+        if: always()
         steps:
             - name: Send notification to Teams
-              uses: dchourasia/ms-teams-notification@1.0
-              if: always()
-              with:
-                  github-token: ${{ github.token }}
-                  webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+              run: |
+                  curl -H "Content-Type: application/json" \
+                       -d "{
+                         \"text\": \"Build terminé pour HarmoGestion API — statut : ${{ job.status }}\"
+                       }" \
+                       ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
