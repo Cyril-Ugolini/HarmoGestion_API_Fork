@@ -52,3 +52,4 @@ jobs:
                          \"text\": \"Build terminé pour HarmoGestion API — statut : ${{ job.status }}\"
                        }" \
                        ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+
