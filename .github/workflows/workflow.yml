@@ -4,6 +4,14 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
+    artefact_afpa:
+        name: Artefact AFPA – Init Workflow
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Workflow déclenché par un événement : ${{ github.event_name }}"
+            - run: echo "Runner utilisé : ${{ runner.os }}"
+            - run: echo "Branche : ${{ github.ref }}"
+            - run: echo "Repository : ${{ github.repository }}"
 
     build:
         name: Build and analyze
