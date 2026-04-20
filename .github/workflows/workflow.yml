@@ -4,14 +4,14 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 jobs:
+
     artefact_afpa:
         name: Artefact AFPA – Init Workflow
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Workflow déclenché par un événement : ${{ github.event_name }}"
-            - run: echo "Runner utilisé : ${{ runner.os }}"
-            - run: echo "Branche : ${{ github.ref }}"
-            - run: echo "Repository : ${{ github.repository }}"
+            - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+            - run: echo "This job is running on a ${{ runner.os }} server hosted by GitHub."
+            - run: echo "Your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
     build:
         name: Build and analyze
@@ -46,7 +46,6 @@ jobs:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
               run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Cyril-Ugolini_HarmoGestion_API_Fork
 
-
     teams_notification:
         name: MS Teams Notification
         runs-on: ubuntu-latest
@@ -60,4 +59,3 @@ jobs:
                          \"text\": \"Build terminé pour HarmoGestion API — statut : ${{ job.status }}\"
                        }" \
                        ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-
