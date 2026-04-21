@@ -1,5 +1,7 @@
 ### Maven ###
 target/
+!target/*.jar
+
 !.mvn/wrapper/maven-wrapper.jar
 .mvn/
 
