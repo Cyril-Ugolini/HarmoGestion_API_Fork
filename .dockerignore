@@ -1,0 +1,37 @@
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+
+### IDE ###
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+### Logs ###
+*.log
+logs/
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Git ###
+.git/
+.gitignore
+
+### Docker ###
+docker-compose.yml
+docker-compose.override.yml
+
+### Tests ###
+/src/test/
+
+### Misc ###
+*.tmp
+*.bak

@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+    ubuntu1:
+        image: ubuntu
+        container_name: ubuntu1
+        command: sleep infinity
+
+    ubuntu2:
+        image: ubuntu
+        container_name: ubuntu2
+        command: sleep infinity

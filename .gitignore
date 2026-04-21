@@ -1,31 +1,42 @@
-HELP.md
+### Maven ###
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-data.properties
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
 
-### Log, target and Javadoc ###
+### Logs ###
 *.log
 *.lck
 /logs/
-/javadoc/
-/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+### Spring Boot ###
+# Ne PAS ignorer application.properties
+# Ignorer les fichiers sensibles si tu en crées
+application-local.properties
+application-secret.properties
+
+### Docker ###
+*.pid
+*.seed
+docker-data/
+docker-compose.override.yml
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
+.idea/
 *.iml
+*.iws
 *.ipr
+
+### VS Code ###
+.vscode/
+
+### Eclipse / STS ###
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache
+.apt_generated
+.factorypath
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,9 +44,15 @@ data.properties
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### Build ###
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Custom ###
+data.properties
