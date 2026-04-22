@@ -53,13 +53,39 @@ jobs:
                   name: harmo-api-jar
                   path: target/*.jar
 
-            - name: Build Docker image
-              run: docker build -t harmo-api:${{ github.sha }} .
+    docker-build-image-api:
+        name: Build & Push Docker Image
+        runs-on: ubuntu-latest
+        needs: build
+        if: ${{ github.ref == 'refs/heads/main' }}
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Connect to Docker Hub
+              uses: docker/login-action@v3
+              with:
+                  username: ${{ secrets.DOCKERHUB_USER }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+            - name: Download JAR artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: harmo-api-jar
+
+            - name: Build and push
+              uses: docker/build-push-action@v5
+              with:
+                  context: .
+                  file: Dockerfile
+                  push: true
+                  tags: ${{ secrets.DOCKERHUB_USER }}/harmogestion-api:latest
+
+            - run: echo "🟢 This job's status is ${{ job.status }}."
 
     Team_Notifications:
         name: MS Teams Notification
         runs-on: ubuntu-latest
-        needs: build
+        needs: docker-build-image-api
         if: always()
         steps:
             - uses: jdcargile/ms-teams-notification@v1.4
