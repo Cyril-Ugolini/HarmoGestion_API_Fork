@@ -1,4 +1,4 @@
-FROM openjdk:25
+FROM eclipse-temurin:21
 EXPOSE 8080
 WORKDIR /app
 COPY *.jar /app/harmogestion-api.jar
